@@ -5,14 +5,18 @@ using UnityEngine;
 public class ObstacleMovement : MonoBehaviour {
 
     const float speed = -10;
-
-	// Use this for initialization
-	void Start () {
+    const float ZKILL = -10;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
         transform.position += new Vector3(0, 0, speed) * Time.deltaTime;
-	}
+        if (transform.position.z < ZKILL)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

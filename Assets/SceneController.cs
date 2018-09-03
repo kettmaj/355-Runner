@@ -5,6 +5,8 @@ using UnityEngine;
 public class SceneController : MonoBehaviour {
 
     public GameObject prefabWall;
+    public GameObject shortWall;
+    float wallChoice = 0;
     float delayUntilSpawn = 0;
     bool wallRight = false;
     bool wallMid = false;
@@ -18,11 +20,12 @@ public class SceneController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        wallChoice = Random.Range(0, 2);
+
         delayUntilSpawn -= Time.deltaTime;
         if (delayUntilSpawn <= 0)
         {
             whichLane = Random.Range(1, 4);
-            print(whichLane);
             if (whichLane == 1)
             {
                 if (wallLeft == false)
@@ -31,7 +34,13 @@ public class SceneController : MonoBehaviour {
                     wallLeft = true;
                     wallRight = false;
                     Vector3 pos = new Vector3(-4, 0, 20);
-                    Instantiate(prefabWall, pos, Quaternion.identity);
+                    if (wallChoice == 0)
+                    {
+                        Instantiate(prefabWall, pos, Quaternion.identity);
+                    } else if (wallChoice == 1)
+                    {
+                        Instantiate(shortWall, pos, Quaternion.identity);
+                    }
                     delayUntilSpawn = Random.Range(1, 3);
                 }
 
@@ -43,7 +52,14 @@ public class SceneController : MonoBehaviour {
                     wallLeft = false;
                     wallRight = false;
                     Vector3 pos = new Vector3(0, 0, 20);
-                    Instantiate(prefabWall, pos, Quaternion.identity);
+                    if (wallChoice == 0)
+                    {
+                        Instantiate(prefabWall, pos, Quaternion.identity);
+                    }
+                    else if (wallChoice == 1)
+                    {
+                        Instantiate(shortWall, pos, Quaternion.identity);
+                    }
                     delayUntilSpawn = Random.Range(1, 3);
                 }
                 
@@ -55,10 +71,19 @@ public class SceneController : MonoBehaviour {
                     wallLeft = false;
                     wallRight = true;
                     Vector3 pos = new Vector3(4, 0, 20);
-                    Instantiate(prefabWall, pos, Quaternion.identity);
+                    if (wallChoice == 0)
+                    {
+                        Instantiate(prefabWall, pos, Quaternion.identity);
+                    }
+                    else if (wallChoice == 1)
+                    {
+                        Instantiate(shortWall, pos, Quaternion.identity);
+                    }
                     delayUntilSpawn = Random.Range(1, 3);
                 }
             }
+
+            
         }
 	}
 }
