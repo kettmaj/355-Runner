@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour {
     int lane = 0;
     int height = 0;
     float jumpCooldown = 0;
+    bool jumped = false;
     Vector3 velocity;
 
 	void Start () {
@@ -39,31 +40,43 @@ public class PlayerMovement : MonoBehaviour {
         float x = (targetX - transform.position.x) * .1f;
         transform.position += new Vector3(x, 0, 0);
 
-        float s = Input.GetAxisRaw("Jump");  // code for jumping
+        float s = Input.GetAxisRaw("Jump");  // code for jumping        
         if (Input.GetButtonDown("Jump"))
         {
             if (jumpCooldown <= 0)
             {
                 if (s == 1) // if pressing space
                 {
-                    height++;
+                    transform.position += new Vector3(0, jumpHeight, 0);
+                    //height++;
+                    //jumped = true;
                 }
                 height = Mathf.Clamp(height, 0, 1);
-                jumpCooldown = 2;
+                jumpCooldown = 1;
             }
         }
-
+        /*
         float targetY = height * jumpHeight;
 
         float y = (targetY - transform.position.y) * .1f; //slide vs instant
         transform.position += new Vector3(0, y, 0);
-
-
+        
+        
+        if (transform.position.y < 0.1)
+        {
+            if (jumped == true)
+            {
+                height--;
+                jumped = false;
+            }
+        }
+        */
         if (transform.position.y >= 0)  //code for falling if having jumped
         {
             velocity += new Vector3(0, GRAVITY, 0) * Time.deltaTime;
             transform.position += velocity * Time.deltaTime;
         }
-        print(y);
+        
+        //print(y);
     }
 }
