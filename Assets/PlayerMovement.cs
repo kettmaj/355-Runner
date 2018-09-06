@@ -6,7 +6,9 @@ public class PlayerMovement : MonoBehaviour {
 
     const float GRAVITY = -9.8f;
     public float laneWidth = 2;
+    public float rowHeight = 2;
     int lane = 0;
+    int row = 0;
     Vector3 velocity;
 
 	void Start () {
@@ -16,7 +18,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        float h = Input.GetAxisRaw("Horizontal"); //code for sliding between lanes
+        float h = Input.GetAxisRaw("Horizontal"); //code for sliding between lanes horizontally
         if (Input.GetButtonDown("Horizontal"))
         {
             if (h == -1) // if pressing left
@@ -31,10 +33,31 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         float targetX = lane * laneWidth;
-
-        //code courtesy of Nick P
         float x = (targetX - transform.position.x) * .1f;
         transform.position += new Vector3(x, 0, 0);
+
+
+        float r = Input.GetAxisRaw("Vertical"); //code for sliding between rows vertically
+        if (Input.GetButtonDown("Vertical"))
+        {
+            if (r == -1) // if pressing left
+            {
+                row--;
+            }
+            else if (r == 1) // if pressing right
+            {
+                row++;
+            }
+            row = Mathf.Clamp(row, -1, 1);
+        }
+
+        float targetY = row * rowHeight;
+        float y = (targetY - transform.position.y) * .1f;
+        transform.position += new Vector3(0, y, 0);
+
+
+        /*//jumpin code courtesy of Nick P which will no longer be used
+        
 
         float s = Input.GetAxisRaw("Jump");  // code for jumping        
                                              // Apply GRAVITY:
@@ -55,6 +78,6 @@ public class PlayerMovement : MonoBehaviour {
             pos.y = 0; // clamp y value
             transform.position = pos;
         }
-        
+        */
     }
 }
