@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour {
 
         float targetX = lane * laneWidth;
 
+        //code courtesy of Nick P
         float x = (targetX - transform.position.x) * .1f;
         transform.position += new Vector3(x, 0, 0);
 
@@ -43,7 +44,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             if (transform.position.y <= 0) // and we're on the ground...
             {
-                velocity.y = 7; // go up!
+                velocity.y = 6; // go up!
             }
         }
         // Euler integration of physics:
