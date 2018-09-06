@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SceneController : MonoBehaviour {
-
+    // variables for adding walls at random moments
     public GameObject prefabWall;
     public GameObject shortWall;
     float wallChoice = 0;
@@ -12,14 +12,23 @@ public class SceneController : MonoBehaviour {
     bool wallMid = false;
     bool wallLeft = false;
     float whichLane = 0;
+    
+    /* variables for spawning tracks in succession
+    public Track[] prefabTracks;
+    List<Track> tracks = new List<Track>();
+    */
 
 	void Start () {
-		
+        //SpawnTrack();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+
+        
+
+         //code for spawing walls at random moments
         wallChoice = Random.Range(0, 2);
 
         delayUntilSpawn -= Time.deltaTime;
@@ -85,5 +94,26 @@ public class SceneController : MonoBehaviour {
 
             
         }
+        
 	}
+    /* // spawning tracks in succession
+    void SpawnTrack()
+    {
+        while (tracks.Count < 5)
+        {
+
+            Vector3 ptOut = new Vector3(0 -7, 0);
+            if(tracks.Count > 0) ptOut = tracks[tracks.Count - 1].pointOut.position;
+
+
+            Track prefab = prefabTracks[Random.Range(0, prefabTracks.Length)];
+
+            Vector3 ptIn = prefab.pointIn.position;
+            Vector3 pos = (prefab.transform.position - ptIn) + ptOut; //finding distance from middle point to in point, then adding the out point to that
+
+            Track newTrack = Instantiate(prefab, pos, Quaternion.identity);
+            tracks.Add(newTrack);
+        }
+    }
+    */
 }
