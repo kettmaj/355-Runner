@@ -6,11 +6,7 @@ public class PlayerMovement : MonoBehaviour {
 
     const float GRAVITY = -9.8f;
     public float laneWidth = 2;
-    public int jumpHeight = 2;
     int lane = 0;
-    int height = 0;
-    float jumpCooldown = 0;
-    bool jumped = false;
     Vector3 velocity;
 
 	void Start () {
@@ -19,7 +15,6 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        jumpCooldown -= Time.deltaTime;
 
         float h = Input.GetAxisRaw("Horizontal"); //code for sliding between lanes
         if (Input.GetButtonDown("Horizontal"))
@@ -41,42 +36,24 @@ public class PlayerMovement : MonoBehaviour {
         transform.position += new Vector3(x, 0, 0);
 
         float s = Input.GetAxisRaw("Jump");  // code for jumping        
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (jumpCooldown <= 0)
-            {
-                if (s == 1) // if pressing space
-                {
-                    transform.position += new Vector3(0, jumpHeight, 0);
-                    //height++;
-                    //jumped = true;
-                }
-                height = Mathf.Clamp(height, 0, 1);
-                jumpCooldown = 1;
-            }
-        }
-        /*
-        float targetY = height * jumpHeight;
+                                             // Apply GRAVITY:
+        velocity += new Vector3(0, GRAVITY, 0) * Time.deltaTime;
 
-        float y = (targetY - transform.position.y) * .1f; //slide vs instant
-        transform.position += new Vector3(0, y, 0);
-        
-        
-        if (transform.position.y < 0.1)
+        if (Input.GetButtonDown("Jump")) // if "jump" is pressed...
         {
-            if (jumped == true)
+            if (transform.position.y <= 0) // and we're on the ground...
             {
-                height--;
-                jumped = false;
+                velocity.y = 7; // go up!
             }
         }
-        */
-        if (transform.position.y >= 0)  //code for falling if having jumped
+        // Euler integration of physics:
+        transform.position += velocity * Time.deltaTime;
+        if (transform.position.y < 0) // if on the ground:
         {
-            velocity += new Vector3(0, GRAVITY, 0) * Time.deltaTime;
-            transform.position += velocity * Time.deltaTime;
+            Vector3 pos = transform.position; // copy the position
+            pos.y = 0; // clamp y value
+            transform.position = pos;
         }
         
-        //print(y);
     }
 }
