@@ -9,7 +9,7 @@ public class CollisionController : MonoBehaviour {
     static public void Add(AABB obj) //adds object to AABB list
     {
         aabbs.Add(obj);
-        print("there are " + aabbs.Count + " AABBS registered");
+        //print("there are " + aabbs.Count + " AABBS registered");
     }
     static public void Remove(AABB obj) //removes object from AABB list
     {

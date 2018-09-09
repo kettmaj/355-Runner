@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 33640466280138698}
   - component: {fileID: 23035420809740750}
   - component: {fileID: 114438381569658350}
+  - component: {fileID: 114750108251550858}
   m_Layer: 0
   m_Name: shortWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1438705293534974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.49, y: 0.57, z: 1.03}
-  m_LocalScale: {x: 7.98, y: 1.19, z: -0.42}
+  m_LocalPosition: {x: 1.5539322, y: -0.21886635, z: 0.31578398}
+  m_LocalScale: {x: 4, y: 1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -95,3 +96,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5152bb1451c14644896bb772b94b7179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114750108251550858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1438705293534974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da07fd4333f160042a8ecdfda41be1dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDoneChecking: 0

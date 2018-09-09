@@ -2,17 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour {
+public class HPElement : MonoBehaviour {
 
-    public enum PowerupType //powerup.type
-    {
-        none,
-        Health,
-        Ammo
-    }
-    public PowerupType type;
-
-
+    private MeshRenderer[] HitPoints;
 	// Use this for initialization
 	void Start () {
 		

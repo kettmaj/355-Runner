@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour {
     public float rowHeight = 2;
     int lane = 0;
     int row = 0;
+    int playerHP = 3;
     Vector3 velocity;
 
 	void Start () {
@@ -17,6 +18,11 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (playerHP == 0)
+        {
+            print("You Died");
+        }
+
 
         float h = Input.GetAxisRaw("Horizontal"); //code for sliding between lanes horizontally
         if (Input.GetButtonDown("Horizontal"))
@@ -93,11 +99,13 @@ public class PlayerMovement : MonoBehaviour {
                     break;
                 case PowerUp.PowerupType.Health:
                     break;
-                case PowerUp.PowerupType.Slowmo:
-                    break;
-                case PowerUp.PowerupType.JetpackBoost:
+                case PowerUp.PowerupType.Ammo:
                     break;
             }
+            Destroy(other.gameObject);
+        } else if (other.tag == "Wall") ///What happens when the player hits a wall
+        {
+            playerHP -= 1;
             Destroy(other.gameObject);
         }
     }
