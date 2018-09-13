@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23763578133596416}
   - component: {fileID: 114333823680639974}
   - component: {fileID: 114947045173790214}
+  - component: {fileID: 114735166767050390}
   m_Layer: 0
   m_Name: Powerup
   m_TagString: PowerUp
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1021094485685420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.64, y: 1.046, z: 0.0713253}
+  m_LocalPosition: {x: -0.42, y: -0.02, z: 31.94}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,6 +98,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDoneChecking: 0
+--- !u!114 &114735166767050390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1021094485685420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5152bb1451c14644896bb772b94b7179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114947045173790214
 MonoBehaviour:
   m_ObjectHideFlags: 1
