@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -11,16 +13,17 @@ public class PlayerMovement : MonoBehaviour {
     int row = 0;
     int playerHP = 3;
     Vector3 velocity;
+    SceneController scene;
 
-	void Start () {
-		
-	}
+    void Start () {
+        scene = GetComponent<SceneController>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
         if (playerHP == 0)
         {
-            print("You Died");
+            SceneManager.LoadScene("Endscreen");
         }
 
 
@@ -100,6 +103,7 @@ public class PlayerMovement : MonoBehaviour {
                 case PowerUp.PowerupType.Health:
                     break;
                 case PowerUp.PowerupType.Ammo:
+                    scene.fuel += 100;
                     break;
             }
             Destroy(other.gameObject);
