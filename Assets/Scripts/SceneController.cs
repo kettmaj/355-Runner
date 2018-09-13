@@ -52,56 +52,16 @@ public class SceneController : MonoBehaviour {
             delayRightLane = Random.Range(1, 3);
         }
 
-        /*
-         //code for spawing walls at random moments
-        wallChoice = Random.Range(0, 2);
+        //spawn fuel
 
-        delayUntilSpawn -= Time.deltaTime;
-        if (delayUntilSpawn <= 0)
-        {
-            SpawnVertical(spawn, 2, 3);
+        //spawn hp
 
+        
+    }
 
-            whichLane = Random.Range(1, 4);
-            if (whichLane == 1)
-            {
-                                
-                    Vector3 pos = new Vector3(-4, 0, 20);
-                    if (wallChoice == 0)
-                    {
-                        Instantiate(prefabWall, pos, Quaternion.identity);
-                    } else if (wallChoice == 1)
-                    {
-                        Instantiate(shortWall, pos, Quaternion.identity);
-                    }
-                    delayUntilSpawn = Random.Range(1, 2);
-            } else if (whichLane == 2)
-            {
-                    Vector3 pos = new Vector3(0, 0, 20);
-                    if (wallChoice == 0)
-                    {
-                        Instantiate(prefabWall, pos, Quaternion.identity);
-                    }
-                    else if (wallChoice == 1)
-                    {
-                        Instantiate(shortWall, pos, Quaternion.identity);
-                    }
-                    delayUntilSpawn = Random.Range(1, 3);
-            } else if (whichLane == 3)
-            {
-                    Vector3 pos = new Vector3(4, 0, 20);
-                    if (wallChoice == 0)
-                    {
-                        Instantiate(prefabWall, pos, Quaternion.identity);
-                    }
-                    else if (wallChoice == 1)
-                    {
-                        Instantiate(shortWall, pos, Quaternion.identity);
-                    }
-                    delayUntilSpawn = Random.Range(1, 3);
-            }
-        }
-        */
+    void SpawnHealth(int lane, int row)
+    {
+
     }
 
     void SpawnVertical(int lane, int row)
@@ -153,24 +113,5 @@ public class SceneController : MonoBehaviour {
         }
     }
 
-    /* // spawning tracks in succession
-    void SpawnTrack()
-    {
-        while (tracks.Count < 5)
-        {
-
-            Vector3 ptOut = new Vector3(0 -7, 0);
-            if(tracks.Count > 0) ptOut = tracks[tracks.Count - 1].pointOut.position;
-
-
-            Track prefab = prefabTracks[Random.Range(0, prefabTracks.Length)];
-
-            Vector3 ptIn = prefab.pointIn.position;
-            Vector3 pos = (prefab.transform.position - ptIn) + ptOut; //finding distance from middle point to in point, then adding the out point to that
-
-            Track newTrack = Instantiate(prefab, pos, Quaternion.identity);
-            tracks.Add(newTrack);
-        }
-    }
-    */
+    
 }

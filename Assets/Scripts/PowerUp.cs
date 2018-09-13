@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour {
 
+
+    const float speed = -10;
+    const float ZKILL = -10;
+
     public enum PowerupType //powerup.type
     {
         none,
@@ -12,7 +16,6 @@ public class PowerUp : MonoBehaviour {
     }
     public PowerupType type;
 
-
 	// Use this for initialization
 	void Start () {
 		
@@ -20,6 +23,10 @@ public class PowerUp : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        transform.position += new Vector3(0, 0, speed) * Time.deltaTime;
+        if (transform.position.z < ZKILL)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
