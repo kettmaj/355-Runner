@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        print(playerHP);
         if (playerHP == 0)
         {
             SceneManager.LoadScene("Endscreen");
@@ -101,6 +102,10 @@ public class PlayerMovement : MonoBehaviour {
                 case PowerUp.PowerupType.none:
                     break;
                 case PowerUp.PowerupType.Health:
+                    if (playerHP < 3)
+                    {
+                        playerHP++;
+                    }
                     break;
                 case PowerUp.PowerupType.Ammo:
                     scene.fuel += 100;
