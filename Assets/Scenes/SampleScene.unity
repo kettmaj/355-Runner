@@ -632,6 +632,7 @@ MonoBehaviour:
   rowHeight: 2
   playerHP: 3
   ammo: 0
+  Bullet: {fileID: 1071093511838982, guid: 0abd95f1cff3a334ab6437ef82245026, type: 2}
 --- !u!23 &691232453
 MeshRenderer:
   m_ObjectHideFlags: 0

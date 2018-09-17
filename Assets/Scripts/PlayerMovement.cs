@@ -14,11 +14,9 @@ public class PlayerMovement : MonoBehaviour {
     public int playerHP = 3;
     public float ammo = 0;
     Vector3 velocity;
-    SceneController scene;
-    
+    public GameObject Bullet;
 
     void Start () {
-        scene = GetComponent<SceneController>();
         ammo = 1000;
     }
 	
@@ -30,6 +28,11 @@ public class PlayerMovement : MonoBehaviour {
             SceneManager.LoadScene("Endscreen");
         }
 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            SpawnBullet();
+
+        }
 
         float h = Input.GetAxisRaw("Horizontal"); //code for sliding between lanes horizontally
         if (Input.GetButtonDown("Horizontal"))
@@ -93,6 +96,15 @@ public class PlayerMovement : MonoBehaviour {
         }
         */
     }
+
+    void SpawnBullet()
+    {
+        Vector3 pos = new Vector3();
+        pos = this.transform.position;
+        Instantiate(Bullet, pos, Quaternion.identity);
+        ammo -= 50;
+    }
+
 
     void OverlappingAABB(AABB other)
     {
