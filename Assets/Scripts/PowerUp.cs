@@ -15,6 +15,7 @@ public class PowerUp : MonoBehaviour {
         Ammo
     }
     public PowerupType type;
+    
 
 	// Use this for initialization
 	void Start () {

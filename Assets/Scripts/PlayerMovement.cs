@@ -11,17 +11,20 @@ public class PlayerMovement : MonoBehaviour {
     public float rowHeight = 2;
     int lane = 0;
     int row = 0;
-    int playerHP = 3;
+    public int playerHP = 3;
+    public float ammo = 0;
     Vector3 velocity;
     SceneController scene;
+    
 
     void Start () {
         scene = GetComponent<SceneController>();
+        ammo = 1000;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        print(playerHP);
+        ammo -= 1;
         if (playerHP == 0)
         {
             SceneManager.LoadScene("Endscreen");
@@ -108,7 +111,7 @@ public class PlayerMovement : MonoBehaviour {
                     }
                     break;
                 case PowerUp.PowerupType.Ammo:
-                    scene.fuel += 100;
+                    ammo += 100;
                     break;
             }
             Destroy(other.gameObject);

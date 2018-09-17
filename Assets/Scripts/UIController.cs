@@ -8,18 +8,19 @@ public class UIController : MonoBehaviour {
 
     public Text scoreText;
     public Slider fuelSlider;
-    SceneController scene;
-
+    public PlayerMovement playerRef;
     
-	void Start () {
-        scene = GetComponent<SceneController>();
+
+
+    void Start () {
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        scoreText.text = "Fuel: " + scene.fuel;
-        fuelSlider.value = scene.fuel;
-        //fuelSlider = scene.fuel;
+        scoreText.text = "Fuel: " + playerRef.ammo;
+        fuelSlider.value = playerRef.ammo;
+        
         
 	}
 
