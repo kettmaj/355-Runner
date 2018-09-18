@@ -6,6 +6,8 @@ public class ProjectileMovement : MonoBehaviour {
 
     const float speed = 30;
     const float ZKILL = 20;
+    public AudioClip wallHit;
+
 
     // Use this for initialization
     void Start () {
@@ -26,6 +28,9 @@ public class ProjectileMovement : MonoBehaviour {
                
         if (other.tag == "Wall") ///What happens when the player hits a wall
         {
+            //GetComponent<AudioSource>().clip = wallHit;
+            GetComponent<AudioSource>().PlayOneShot(wallHit);
+
             Destroy(other.gameObject);
         }
     }

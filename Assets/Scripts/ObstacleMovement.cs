@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ObstacleMovement : MonoBehaviour {
 
-    const float speed = -10;
-    const float ZKILL = -10;
+    const float speed = -20;
+    const float ZKILL = -1;
     // Use this for initialization
     void Start () {
 		

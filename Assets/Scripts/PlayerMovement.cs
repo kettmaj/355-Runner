@@ -16,11 +16,12 @@ public class PlayerMovement : MonoBehaviour {
     Vector3 velocity;
     public GameObject Bullet;
     public AudioClip Shoot;
+    public AudioClip playerHit;
+    public AudioClip Pickup;
 
     void Start () {
         ammo = 1000;
         GetComponent<AudioSource>().playOnAwake = false;
-        GetComponent<AudioSource>().clip = Shoot;
     }
 	
 	// Update is called once per frame
@@ -102,7 +103,8 @@ public class PlayerMovement : MonoBehaviour {
 
     void SpawnBullet()
     {
-        GetComponent<AudioSource>().Play();
+        //GetComponent<AudioSource>().clip = Shoot;
+        GetComponent<AudioSource>().PlayOneShot(Shoot);
         Vector3 pos = new Vector3();
         pos = this.transform.position;
         Instantiate(Bullet, pos, Quaternion.identity);
@@ -123,16 +125,25 @@ public class PlayerMovement : MonoBehaviour {
                 case PowerUp.PowerupType.Health:
                     if (playerHP < 3)
                     {
+                        //GetComponent<AudioSource>().clip = Pickup;
+                        GetComponent<AudioSource>().PlayOneShot(Pickup);
+
                         playerHP++;
                     }
                     break;
                 case PowerUp.PowerupType.Ammo:
-                    ammo += 100;
+                    //GetComponent<AudioSource>().clip = Pickup;
+                    GetComponent<AudioSource>().PlayOneShot(Pickup);
+
+                    ammo += 150;
                     break;
             }
             Destroy(other.gameObject);
         } else if (other.tag == "Wall") ///What happens when the player hits a wall
         {
+            //GetComponent<AudioSource>().clip = playerHit;
+            GetComponent<AudioSource>().PlayOneShot(playerHit);
+
             playerHP -= 1;
             Destroy(other.gameObject);
         }

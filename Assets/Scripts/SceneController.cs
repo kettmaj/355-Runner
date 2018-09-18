@@ -37,19 +37,19 @@ public class SceneController : MonoBehaviour {
         {
             whichRow = Random.Range(1, 4); //bottom row 1, mid row 2, top row 3 
             SpawnVertical(1, whichRow); //if spawining in the mid lane, lane will always be 1
-            delayLeftLane = Random.Range(1, 3);
+            delayLeftLane = Random.Range(0, 2);
         }
         if (delayMidLane <= 0)
         {
             whichRow = Random.Range(1, 4); //bottom row 1, mid row 2, top row 3 
             SpawnVertical(2, whichRow); //if spawining in the mid lane, lane will always be 2
-            delayMidLane = Random.Range(1, 3);
+            delayMidLane = Random.Range(0, 2);
         }
         if (delayRightLane <= 0)
         {
             whichRow = Random.Range(1, 4); //bottom row 1, mid row 2, top row 3 
             SpawnVertical(3, whichRow); //if spawining in the mid lane, lane will always be 3
-            delayRightLane = Random.Range(1, 3);
+            delayRightLane = Random.Range(0, 2);
         }
 
         //spawn fuel
