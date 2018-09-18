@@ -5,19 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class MainMenucontroller : MonoBehaviour {
 
+    public AudioSource Beep = null;
+
 	public void PlaybuttonPressed()
     {
-        print("play");
+        //print("play");
+        //Beep.Play;
         SceneManager.LoadScene("SampleScene");
+
     }
     public void OptionsPressed()
     {
-        print("options");
+        //print("options");
 
     }
     public void QuitPressed()
     {
-        print("quit");
+        //print("quit");
         Application.Quit();
 
     }

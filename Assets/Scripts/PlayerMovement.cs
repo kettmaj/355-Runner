@@ -15,9 +15,12 @@ public class PlayerMovement : MonoBehaviour {
     public float ammo = 0;
     Vector3 velocity;
     public GameObject Bullet;
+    public AudioClip Shoot;
 
     void Start () {
         ammo = 1000;
+        GetComponent<AudioSource>().playOnAwake = false;
+        GetComponent<AudioSource>().clip = Shoot;
     }
 	
 	// Update is called once per frame
@@ -99,6 +102,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void SpawnBullet()
     {
+        GetComponent<AudioSource>().Play();
         Vector3 pos = new Vector3();
         pos = this.transform.position;
         Instantiate(Bullet, pos, Quaternion.identity);
