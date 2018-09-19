@@ -47,7 +47,7 @@ public class AABB : MonoBehaviour {
     void OnDrawGizmos()
     {
         Gizmos.color = isOverlapping ? Color.red :  Color.green; //tertiary operator, 1 line if/else
-        Gizmos.DrawWireCube(transform.position, mesh.bounds.size); //only shows in editor while the game is running
+        //Gizmos.DrawWireCube(transform.position, mesh.bounds.size); //only shows in editor while the game is running
     }
 
     /// <summary>

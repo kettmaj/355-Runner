@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour {
     public AudioClip Pickup;
 
     void Start () {
-        ammo = 1000;
+        ammo = 1500;
         GetComponent<AudioSource>().playOnAwake = false;
     }
 	
