@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         ammo -= 1;
-        if (playerHP == 0)
+        if (playerHP == 0 || ammo < 0)
         {
             SceneManager.LoadScene("Endscreen");
         }
@@ -135,7 +135,7 @@ public class PlayerMovement : MonoBehaviour {
                     //GetComponent<AudioSource>().clip = Pickup;
                     GetComponent<AudioSource>().PlayOneShot(Pickup);
 
-                    ammo += 150;
+                    ammo += 100;
                     break;
             }
             Destroy(other.gameObject);
